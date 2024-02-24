@@ -17,7 +17,7 @@ int main() {
     printf("Enter double ->");
     scanf("%lf", &number);
     printf("Enter filename ->");
-    scanf("%s", filename);
+    scanf("%255s", filename);
     fin = fopen(filename, "r");
 
     if (!fin) {
@@ -26,6 +26,7 @@ int main() {
     }
 
     printf("Serial number of the first number %g is %d", number, firstOccurrence(fin, number));
+    fclose(fin);
 
     return 0;
 }
