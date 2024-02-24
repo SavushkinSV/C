@@ -1,6 +1,6 @@
 /*
 2.13
-Постройте функции заполнения квадратной татрицы значениями aij= 1 / (1 + i + j), i,j=0,...,n-1 (это так
+Постройте функцию заполнения квадратной татрицы значениями aij= 1 / (1 + i + j), i,j=0,...,n-1 (это так
 называемая матрица Гильберта).
 */
 
@@ -8,14 +8,7 @@
 #include <stdlib.h>
 
 double **get_matrix(int row, int col);
-void hilbert(double **matrix, int row, int col) {
-    for (int i = 0; i < row; i++) {
-        for (int j = 0; j < col; j++) {
-            matrix[i][j] = 1.0 / (double)(i + j + 1);
-        }
-    }
-}
-
+void hilbert(double **matrix, int row, int col);
 void output_matrix(double **matrix, int row, int col);
 void free_matrix(double **matrix);
 
@@ -44,6 +37,14 @@ double **get_matrix(int row, int col) {
     }
 
     return array_pointer;
+}
+
+void hilbert(double **matrix, int row, int col) {
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < col; j++) {
+            matrix[i][j] = 1.0 / (double)(i + j + 1);
+        }
+    }
 }
 
 void output_matrix(double **matrix, int row, int col) {
