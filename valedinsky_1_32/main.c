@@ -6,6 +6,7 @@
 #include <stdio.h>
 
 int count(char *name, char *a, int *nmb);
+void free_bufer();
 
 int main() {
     char a[256];  /* исходная строка */
@@ -17,7 +18,8 @@ int main() {
     scanf("%255s", filename);
     printf("Enter a character string ->");
 
-    scanf("%255s", a);
+    free_bufer();
+    fgets(a, 255, stdin);
     if ((n = count(filename, a, nmb)) == -1) {
         printf("File \"%s\" not open\n", filename);
         return -1;
@@ -42,4 +44,11 @@ int count(char *name, char *a, int *nmb) {
     fclose(fin);
 
     return i;
+}
+
+void free_bufer() {
+    char c = getc(stdin);
+    while (c != '\n' && c != ' ') {
+        c = getc(stdin);
+    }
 }
