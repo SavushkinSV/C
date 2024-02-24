@@ -13,7 +13,7 @@ int main() {
     FILE *fin;
 
     printf("Enter filename -> ");
-    scanf("%s", filename);
+    scanf("%255s", filename);
     fin = fopen(filename, "r");
 
     if (!fin) {
@@ -22,7 +22,7 @@ int main() {
     }
     printf("Different elements: %d", differentElements(fin));
     fclose(fin);
-    
+
     return 0;
 }
 
