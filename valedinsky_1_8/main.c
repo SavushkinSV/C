@@ -17,7 +17,7 @@ int main() {
     printf("Enter double ->");
     scanf("%lf", &number);
     printf("Enter filename ->");
-    scanf("%s", filename);
+    scanf("%255s", filename);
     fin = fopen(filename, "r");
 
     if (!fin) {
@@ -26,12 +26,13 @@ int main() {
     }
 
     printf("Serial number of the last number %g is %d", number, lastOccurrence(fin, number));
+    fclose(fin);
 
     return 0;
 }
 
 int lastOccurrence(FILE *fin, double number) {
-    int index, count = 0;
+    int index = 0, count = 0;
     double currentNumber;
     while (fscanf(fin, "%lf", &currentNumber) == 1) {
         count++;

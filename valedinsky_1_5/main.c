@@ -11,7 +11,7 @@ int main() {
     char filename[256];
     FILE *fin;
     printf("Enter filename ->");
-    scanf("%s", filename);
+    scanf("%255s", filename);
     fin = fopen(filename, "r");
 
     if (!fin) {

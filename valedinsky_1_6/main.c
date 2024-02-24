@@ -15,7 +15,7 @@ int main() {
     printf("Enter double ->");
     scanf("%lf", &number);
     printf("Enter filename ->");
-    scanf("%s", filename);
+    scanf("%255s", filename);
     fin = fopen(filename, "r");
 
     if (!fin) {
@@ -24,6 +24,7 @@ int main() {
     }
 
     printf("Repeat number %g is %d", number, repeatNumber(fin, number));
+    fclose(fin);
 
     return 0;
 }
