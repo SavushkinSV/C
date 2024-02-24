@@ -13,7 +13,7 @@ int main() {
     FILE *fin;
 
     printf("Enter filename ->");
-    scanf("%s", filename);
+    scanf("%255s", filename);
     fin = fopen(filename, "r");
 
     if (!fin) {
@@ -21,16 +21,16 @@ int main() {
         return -1;
     }
 
-    printf("Max number: %g\n", findMax(fopen(filename, "r")));
+    printf("Max number: %g\n", findMax(fin));
+    printf("Min number: %g\n", findMin(fin));
     fclose(fin);
-    printf("Min number: %g\n", findMin(fopen(filename, "r")));
-    fclose(fin);    
 
     return 0;
 }
 
 double findMax(FILE *fin) {
     double max, currentNumber;
+    fseek(fin, 0, SEEK_SET);
     fscanf(fin, "%lf", &max);
     while (fscanf(fin, "%lf", &currentNumber) == 1) {
         if (currentNumber > max) {
@@ -43,6 +43,7 @@ double findMax(FILE *fin) {
 
 double findMin(FILE *fin) {
     double min, currentNumber = 0;
+    fseek(fin, 0, SEEK_SET);
     fscanf(fin, "%lf", &min);
     while (fscanf(fin, "%lf", &currentNumber) == 1) {
         if (currentNumber < min) {
