@@ -15,3 +15,9 @@ build_fsanitize:
 clean:
 	rm -rf *.o *.out
 
+check:
+	clang-format -n ./*.c
+	clang-format -n ./*.h
+	cppcheck --enable=all --suppress=missingIncludeSystem ./*.c
+
+
