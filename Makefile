@@ -19,5 +19,6 @@ check:
 	clang-format -n */*.c
 	# clang-format -n */*.h
 	cppcheck --enable=all --suppress=missingIncludeSystem */*.c
+	# valgrind --tool=memcheck --leak-check=yes ./a.out 
 
 
