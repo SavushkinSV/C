@@ -6,6 +6,8 @@
 #include <stdio.h>
 #include <string.h>
 
+int ltrim(char *str);
+int rtrim(char *str, int start_index);
 void trim(char *str, char *result);
 
 int main() {
@@ -20,27 +22,40 @@ int main() {
     return 0;
 }
 
-void trim(char *str, char *result) {
-    int ch = 1;
+int ltrim(char *str) {
     int start_index = 0;
-
-    int index_result = 0;
-    int first_space = 0;
     while (str[start_index] == ' ') {
         start_index++;
     }
 
+    return start_index;
+}
+
+int rtrim(char *str, int start_index) {
+    int end_index = strlen(str) - 1;
+    while (str[end_index] == ' ') {
+        if (end_index <= start_index) {
+            break;
+        }
+        end_index--;
+    }
+
+    return end_index;
+}
+
+void trim(char *str, char *result) {
+    int ch = 1;
+
+    int index_result = 0;
+    int first_space = 0;
+
+    int start_index = ltrim(str);
     int length = strlen(str);
+
     if (start_index == length) {
         result[0] = '\0';
     } else {
-        int end_index = length - 1;
-        while (str[end_index] == ' ') {
-            if (end_index <= start_index) {
-                break;
-            }
-            end_index--;
-        }
+        int end_index = rtrim(str, start_index);
 
         for (int i = start_index; i <= end_index; i++) {
             ch = str[i];
