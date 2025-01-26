@@ -36,6 +36,13 @@ int main() {
     char filename[256];
     int key = 0;
 
+    char c = 'A';
+    while (c <= 'z') {
+        printf("%c", c);
+        c++;
+    }
+    printf("\n");
+
     printf("Enter filename: ");
     scanf("%s", filename);
     printf("Enter key: ");
@@ -65,3 +72,5 @@ int main() {
         }
     }
 }
+
+// gcc -Wall -Wextra -Werror task_07.c

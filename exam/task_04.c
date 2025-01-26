@@ -70,5 +70,8 @@ void trim(char *str, char *result) {
             result[index_result] = str[i];
             index_result++;
         }
+        result[index_result] = '\0';
     }
 }
+
+// gcc -Wall -Wextra -Werror task_04.c
