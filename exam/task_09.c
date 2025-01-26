@@ -33,3 +33,5 @@ int main(void) {
 
     return 0;
 }
+
+// gcc -Wall -Wextra -Werror task_09.c
