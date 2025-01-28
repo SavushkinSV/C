@@ -46,3 +46,5 @@ int main() {
 
     return 0;
 }
+
+// gcc -Wall -Wextra -Werror task_03.c
