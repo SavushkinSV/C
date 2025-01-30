@@ -1,8 +1,16 @@
 /*
 С клавиатуры водят количество человек.
 Затем последовательно вводится фамилия имя и балл за экзамен.
-Вывести в консоль всех у кого балл за экзамет более 3.
+Вывести в консоль всех у кого балл за экзамен более 3.
 При ошибке ввода выводить "n/a".
+
+4
+John Week 5
+Amadeus Mozart 3
+John Cena 2
+Clark Kent 4
+
+John Week, Clark Kent
 */
 
 #include <stdio.h>
@@ -55,3 +63,6 @@ void exit_program() {
     printf("n/a");
     exit(EXIT_FAILURE);
 }
+
+// gcc -Wall -Wextra -Werror task_05.c
+// valgrind --tool=memcheck --leak-check=yes ./a.out

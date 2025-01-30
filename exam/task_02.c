@@ -3,6 +3,16 @@
 Далее заполнить матрицу.
 Вывести на экран результат перемножения матриц.
 В случае ввода некорректных данных выводить "n/a".
+
+Пример.
+Ввод:
+2
+1 2 3 4
+-1 2 3 -4
+
+Вывод:
+5 -6
+9 -10
 */
 
 #include <stdio.h>
@@ -16,7 +26,7 @@ void mul_matrix(int **matrix_1, int **matrix_2, int **result, int n);
 
 int main() {
     int n = 0;
-    if (scanf("%d", &n) != 1) {
+    if (scanf("%d", &n) != 1 || n < 1) {
         printf("n/a");
         return -1;
     }
@@ -25,25 +35,23 @@ int main() {
     int **matrix_2 = get_matrix(n);
     int **result = get_matrix(n);
 
-    int error = input_matrix(matrix_1, n);
-    if (!error) {
-        error = input_matrix(matrix_2, n);
+    int not_error = input_matrix(matrix_1, n);
+    if (not_error) {
+        not_error = input_matrix(matrix_2, n);
     }
 
-    if (error) {
-        printf("n/a");
-    } else {
+    if (not_error) {
         mul_matrix(matrix_1, matrix_2, result, n);
-        print_matrix(matrix_1, n);
-        print_matrix(matrix_2, n);
         print_matrix(result, n);
+    } else {
+        printf("n/a");
     }
 
     free_mattix(matrix_1);
     free_mattix(matrix_2);
     free_mattix(result);
 
-    return error;
+    return !not_error;
 }
 
 int **get_matrix(int n) {
@@ -75,20 +83,16 @@ void free_mattix(int **matrix) {
 }
 
 int input_matrix(int **matrix, int n) {
-    int error = 0;
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
+    int not_error = 1;
+    for (int i = 0; i < n && not_error; i++) {
+        for (int j = 0; j < n && not_error; j++) {
             if (scanf("%d", &matrix[i][j]) != 1) {
-                error = 1;
-                break;
+                not_error = 0;
             }
-        }
-        if (error) {
-            break;
         }
     }
 
-    return error;
+    return not_error;
 }
 
 void mul_matrix(int **matrix_1, int **matrix_2, int **result, int n) {
@@ -101,3 +105,6 @@ void mul_matrix(int **matrix_1, int **matrix_2, int **result, int n) {
         }
     }
 }
+
+// gcc -Wall -Wextra -Werror task_02.c
+// valgrind --tool=memcheck --leak-check=yes ./a.out

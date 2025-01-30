@@ -67,3 +67,5 @@ void find_name(Person *persons, char *input_name, int count) {
 
     printf(", %d", (int)round(sum_height * 1.0 / find_person));
 }
+
+// gcc -Wall -Wextra -Werror task_06.c -lm

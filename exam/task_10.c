@@ -52,3 +52,5 @@ int main() {
 
     return 0;
 }
+
+// gcc -Wall -Wextra -Werror task_10.c
